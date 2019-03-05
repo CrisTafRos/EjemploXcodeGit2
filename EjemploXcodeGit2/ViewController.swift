@@ -44,12 +44,14 @@ class ViewController: UIViewController {
         
         /*viewRoja.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 16, bottom: 0, right: 50))*/
         
+        /*
         viewRoja.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 16, bottom: 0, right: 50), size: .init(width: 100, height: 100))
         
         // Esto nos sacará un warning, pues nuestras especificaciones tienen conflictos. Ver consola.
+         */
         
-        
-        
+        viewRoja.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: nil, bottom: nil, trailing: view.safeAreaLayoutGuide.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 16), size: .init(width: 100, height: 100))
+        // Esto nos dejará crear una vista a partir de cierta ubicación y con cierta medida
     }
 }
 
@@ -79,6 +81,7 @@ extension UIView {
         trailingAnchor.constraint(equalTo: trailing, constant: padding.right).isActive = true
     }*/
     
+    /*
     func anchor(top: NSLayoutYAxisAnchor, leading: NSLayoutXAxisAnchor, bottom: NSLayoutYAxisAnchor, trailing: NSLayoutXAxisAnchor, padding: UIEdgeInsets = .zero, size: CGSize = .zero){
         
         translatesAutoresizingMaskIntoConstraints = false
@@ -89,6 +92,41 @@ extension UIView {
         leadingAnchor.constraint(equalTo: leading, constant: padding.left).isActive = true
         bottomAnchor.constraint(equalTo: bottom, constant: padding.bottom).isActive = true
         trailingAnchor.constraint(equalTo: trailing, constant: padding.right).isActive = true
+        
+        //Comparando tamaño
+        
+        if size.width != 0 {
+            widthAnchor.constraint(equalToConstant: size.width).isActive = true
+        }
+        
+        if size.height != 0 {
+            heightAnchor.constraint(equalToConstant: size.height).isActive = true
+        }
+    } */
+    
+    // Desligando los margenes
+    
+    func anchor(top: NSLayoutYAxisAnchor?, leading: NSLayoutXAxisAnchor?, bottom: NSLayoutYAxisAnchor?, trailing: NSLayoutXAxisAnchor?, padding: UIEdgeInsets = .zero, size: CGSize = .zero){
+        
+        translatesAutoresizingMaskIntoConstraints = false
+        
+        // Habilita el Auto Layout
+        
+        if let top = top {
+            topAnchor.constraint(equalTo: top, constant: padding.top).isActive = true
+        }
+        
+        if let leading = leading {
+            leadingAnchor.constraint(equalTo: leading, constant: padding.left).isActive = true
+        }
+        
+        if let bottom = bottom {
+            bottomAnchor.constraint(equalTo: bottom, constant: padding.bottom).isActive = true
+        }
+        
+        if let trailing = trailing {
+            trailingAnchor.constraint(equalTo: trailing, constant: padding.right).isActive = true
+        }
         
         //Comparando tamaño
         
