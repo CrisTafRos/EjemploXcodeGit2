@@ -29,13 +29,18 @@ class ViewController: UIViewController {
          * Leading -> Izquierda
          * Trailing -> Derecha */
         
+        /*
         viewRoja.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         viewRoja.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         viewRoja.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         viewRoja.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+         */
         
         // Hasta aquí nos crea una vista de color rojo que ocupa toda la pantalla del dispositivo.
         
+        //Invocando la función anchor
+        
+        viewRoja.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor)
         
     }
 }
