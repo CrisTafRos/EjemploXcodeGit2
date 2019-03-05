@@ -40,12 +40,15 @@ class ViewController: UIViewController {
         
         //Invocando la función anchor
         
-        viewRoja.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor)
+        /*viewRoja.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor)*/
+        
+        viewRoja.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, padding: .init(top: 0, left: 16, bottom: 0, right: 16))
         
     }
 }
 
 extension UIView {
+    /*
     func anchor(top: NSLayoutYAxisAnchor, leading: NSLayoutXAxisAnchor, trailing: NSLayoutXAxisAnchor, bottom: NSLayoutYAxisAnchor){
         
         translatesAutoresizingMaskIntoConstraints = false
@@ -56,5 +59,17 @@ extension UIView {
         leadingAnchor.constraint(equalTo: leading).isActive = true
         trailingAnchor.constraint(equalTo: trailing).isActive = true
         bottomAnchor.constraint(equalTo: bottom).isActive = true
+    }
+    */
+    func anchor(top: NSLayoutYAxisAnchor, leading: NSLayoutXAxisAnchor, trailing: NSLayoutXAxisAnchor, bottom: NSLayoutYAxisAnchor, padding: UIEdgeInsets = .zero){
+        
+        translatesAutoresizingMaskIntoConstraints = false
+        
+        // Habilita el Auto Layout
+        
+        topAnchor.constraint(equalTo: top, constant: padding.top).isActive = true
+        leadingAnchor.constraint(equalTo: leading, constant: padding.left).isActive = true
+        trailingAnchor.constraint(equalTo: trailing, constant: padding.right).isActive = true
+        bottomAnchor.constraint(equalTo: bottom, constant: padding.bottom).isActive = true
     }
 }
